@@ -1,16 +1,32 @@
 backend:
   name: git-gateway
-  branch: master
-media_folder: "media"
-public_folder: "media"
-publish_mode: editorial_workflow
+  branch: master # Using master as specified
+
+media_folder: "media" # All media files will be stored in this folder
+public_folder: "media" # Public path for accessing media
+
+publish_mode: editorial_workflow # Enable Netlify CMS's Editorial Workflow for draft, review, and publish stages
+
 collections:
+  - label: "Header"
+    name: "header"
+    files:
+      - label: "Header Content"
+        name: "header"
+        format: "json"
+        file: "content/header.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+
   - label: "About"
     name: "about"
     files:
-    - label: "About"
-      name: "info"
-      format: 'json'
-      file: "content/about.json"
-      fields:
-        - {label: "Message", name: message, widget: string}
+      - label: "About Section"
+        name: "info"
+        format: "json"
+        file: "content/about.json"
+        fields:
+          - { label: "Message", name: "message", widget: "string" }
+
+  # Optional additional collections can be added here for other parts of the site, following the same format.
